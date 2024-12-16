@@ -25,31 +25,5 @@
         </form>
         <p id="message"></p>
     </div>
-
-    <script>
-        // JavaScript to handle form submission and local storage
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from refreshing the page
-
-            const userId = document.getElementById('userId').value;
-            const password = document.getElementById('password').value;
-
-            if (userId && password) {
-                // Save user data locally
-                const userData = { userId, password };
-                localStorage.setItem('userCredentials', JSON.stringify(userData));
-
-                // Display success message
-                document.getElementById('message').textContent = 'Credentials saved successfully!';
-                document.getElementById('message').style.color = 'green';
-
-                // Clear the form
-                document.getElementById('loginForm').reset();
-            } else {
-                document.getElementById('message').textContent = 'Please fill in both fields.';
-                document.getElementById('message').style.color = 'red';
-            }
-        });
-    </script>
 </body>
 </html>
