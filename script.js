@@ -1,17 +1,13 @@
-// Advanced JavaScript for Credential Form
 
-// Handle form submission
 const loginForm = document.getElementById('loginForm');
 const messageElement = document.getElementById('message');
 
 loginForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); 
 
-    // Fetch user input values
     const userId = document.getElementById('userId').value.trim();
     const password = document.getElementById('password').value.trim();
 
-    // Validation rules
     if (!userId || !password) {
         displayMessage('Both fields are required.', 'error');
         return;
@@ -22,27 +18,22 @@ loginForm.addEventListener('submit', (event) => {
         return;
     }
 
-    // Save data to localStorage
     const userData = {
         userId,
-        password: btoa(password) // Basic encoding for passwords (not secure for real-world use)
+        password: btoa(password) 
     };
     localStorage.setItem('userCredentials', JSON.stringify(userData));
 
-    // Display success message
     displayMessage('Credentials saved successfully!', 'success');
 
-    // Clear the form
     loginForm.reset();
 });
 
-// Utility function to display messages
 function displayMessage(message, type) {
     messageElement.textContent = message;
     messageElement.style.color = type === 'success' ? 'green' : 'red';
 }
 
-// Check if credentials exist in localStorage
 (function loadStoredCredentials() {
     const storedData = localStorage.getItem('userCredentials');
     if (storedData) {
